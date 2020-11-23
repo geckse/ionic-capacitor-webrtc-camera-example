@@ -4,6 +4,13 @@
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
+  "server": {
+    "hostname": "localhost",
+    "iosScheme": "https",
+    "androidScheme": "https",
+    "url": "https://dev.geckse.de/webrtc",
+    "allowNavigation": ["*.geckse.de"]
+  },
   "plugins": {
     "SplashScreen": {
       "launchShowDuration": 0
