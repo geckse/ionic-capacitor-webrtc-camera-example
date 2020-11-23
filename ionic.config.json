@@ -1,0 +1,7 @@
+{
+  "name": "ionic-webrtc-cam",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
