@@ -27,17 +27,19 @@ export class HomePage implements OnInit {
 
       // check prequisites
       let loc = window.location;
-      console.log(loc);
 
       // Check Permissions
-      let permissionCamera = await Permissions.query({ name: PermissionType.Camera });
+      /* let permissionCamera = await Permissions.query({ name: PermissionType.Camera });
       let permissionMicrophone = await Permissions.query({ name: PermissionType.Microphone });
 
       if(permissionCamera.state != 'granted' && permissionMicrophone.state != 'granted'){
         console.error("Web-RTC-Cam: You might need to handle permissions on your device with Capacitor Plugins which prompt and grant these rights.");
-      }
+      }*/
 
-      this.video = this.videoEle.nativeElement;
+      if(this.videoEle && this.videoEle.nativeElement) this.video = this.videoEle.nativeElement;
+
+      // @ts-ignore
+      if(!this.video) this.video = document.getElementById('stream');
 
       const constraints = {
         /*video: {
