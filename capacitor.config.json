@@ -1,1 +1,17 @@
-{}
+{
+  "appId": "codes.gex.ionic.webrtc.cam",
+  "appName": "ionic-webrtc-cam",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www",
+  "server": {
+    "hostname": "localhost",
+    "allowNavigation": ["*.geckse.de"]
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  },
+  "cordova": {}
+}

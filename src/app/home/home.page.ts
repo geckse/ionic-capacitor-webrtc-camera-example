@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 
 import { Plugins, PermissionType } from "@capacitor/core"
-const { Permissions , Camera } = Plugins;
+const { Permissions , Camera, Browser } = Plugins;
 
 @Component({
   selector: 'app-home',
@@ -16,6 +16,17 @@ export class HomePage implements OnInit {
   constructor() {}
 
   ngOnInit(){
+    console.log("START");
+    setTimeout(()=>{
+      console.log("FUCK YWAY");
+      window.open("https://dev.geckse.de/webrtc",'_self', 'location=yes');
+
+    },1000);
+    /*
+    Browser.open({ url: 'https://dev.geckse.de/webrtc', presentationStyle: 'popover' }).then(()=>{
+      // test
+    }); */
+
     //this.startCamera();
   }
 
