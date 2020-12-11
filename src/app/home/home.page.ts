@@ -10,18 +10,18 @@ const { Permissions , Camera } = Plugins;
 })
 export class HomePage implements OnInit {
 
-  @ViewChild('stream', {static: false}) videoEle: ElementRef;
-  video: HTMLVideoElement; // live stream in html video element
+  //@ViewChild('stream', {static: false}) videoEle: ElementRef;
+  //video: HTMLVideoElement; // live stream in html video element
 
   constructor() {}
 
   ngOnInit(){
-    this.startCamera();
+    //this.startCamera();
   }
 
   /*
     Start Camera
-  */
+  */ /*
   async startCamera(){
 
 
@@ -40,13 +40,6 @@ export class HomePage implements OnInit {
       this.video = this.videoEle.nativeElement;
 
       const constraints = {
-        /*video: {
-          aspectRatio: VIDEO_WIDTH / VIDEO_HEIGHT,
-          frameRate: { ideal: 30 },
-          width: { min: VIDEO_WIDTH/2, ideal: VIDEO_WIDTH },
-          height: { min: VIDEO_HEIGHT/2, ideal: VIDEO_HEIGHT },
-          facingMode: { ideal: "user" }
-        },*/
         video: true,
         audio: true
       };
@@ -60,6 +53,6 @@ export class HomePage implements OnInit {
         this.video.play();
       });
 
-  }
+  }*/
 
 }
