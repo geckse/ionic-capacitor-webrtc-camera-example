@@ -1,0 +1,30 @@
+<h2>CAMERA</h2>
+
+<video id="localVideo"></video>
+
+
+
+<script type="text/javascript">
+window.addEventListener("load", function(){
+  console.log('Fame for the frame');
+  console.log(window.navigator.mediaDevices);
+  console.log(window.location.href);
+
+  let video = document.getElementById('localVideo');
+
+  var constraints = {
+    video: true,
+    audio: true
+  };
+  video.setAttribute('autoplay', '');
+  video.setAttribute('muted', '');
+  video.setAttribute('playsinline', '');
+  navigator.mediaDevices.getUserMedia(constraints).then(function(stream) {
+    video.srcObject = stream;
+    video.play();
+  });
+});
+
+
+
+</script>

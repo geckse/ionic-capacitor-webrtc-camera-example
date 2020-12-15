@@ -1,7 +1,12 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
-import { Plugins, PermissionType } from "@capacitor/core"
-const { Permissions , Camera, Browser } = Plugins;
+import { Plugins, PermissionType, Capacitor } from "@capacitor/core"
+const { Permissions , Camera, Browser, Filesystem } = Plugins;
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
+import { DomSanitizer } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-home',
@@ -10,18 +15,41 @@ const { Permissions , Camera, Browser } = Plugins;
 })
 export class HomePage implements OnInit {
 
-  //@ViewChild('stream', {static: false}) videoEle: ElementRef;
-  //video: HTMLVideoElement; // live stream in html video element
+  @ViewChild('stream', {static: false}) videoEle: ElementRef;
+  video: HTMLVideoElement; // live stream in html video element
 
-  constructor() {}
+  page: string = "";
+  win: any;
+
+  constructor(private dom:DomSanitizer, private http: HttpClient, private iab: InAppBrowser) {}
 
   ngOnInit(){
     console.log("START");
-    setTimeout(()=>{
-      console.log("FUCK YWAY");
-      window.open("https://dev.geckse.de/webrtc",'_self', 'location=yes');
 
-    },1000);
+
+
+    console.log('get html');
+
+    this.http.get('assets/rtc/index.html', { responseType: 'text' }).subscribe((response) => {
+      this.page = response;
+      console.log(window.location.href);
+      console.log(response);
+        console.log('prep browser');
+        setTimeout(()=>{
+          console.log('open browser');
+          this.win = this.iab.create("data:text/html;charset=utf-8,"+this.page, "_blank", "location=no,usewkwebview=yes");
+          console.log(this.win);
+
+              this.win.executeScript(
+                  { code: 'document.body.innerHTML = "Fame for the frame "+window.location.href+" - "+(typeof window.navigator.mediaDevices);' }
+              );
+
+          this.win.show();
+        },1200)
+
+    });
+
+
     /*
     Browser.open({ url: 'https://dev.geckse.de/webrtc', presentationStyle: 'popover' }).then(()=>{
       // test

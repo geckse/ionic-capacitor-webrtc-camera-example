@@ -13,5 +13,16 @@
       "launchShowDuration": 0
     }
   },
-  "cordova": {}
+  "cordova": {
+      "android": {
+          "preferences": {
+              "WKWebViewOnly": true
+          }
+      },
+      "ios": {
+          "preferences": {
+              "WKWebViewOnly": true
+          }
+      }
+  }
 }
