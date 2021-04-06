@@ -8,6 +8,8 @@
     "hostname": "localhost",
     "iosScheme": "https",
     "androidScheme": "https",
+    "url": "https://dev.geckse.de/webrtc",
+    "allowNavigation": ["*.geckse.de"]
   },
   "plugins": {
     "SplashScreen": {
